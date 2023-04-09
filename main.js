@@ -1,6 +1,8 @@
 let formulario = document.querySelector("#form");
 let montoTotal = document.querySelector("#montoTotal");
 let datos = [];
+let ingresos = 0;
+let egresos = 0;
 
 //Con este fragmento de codigo pbtengo los datos de "valor", "select" y "descripcion" y los imprimo.
 
@@ -11,15 +13,30 @@ formulario.addEventListener("submit", (e)=>{
     let descripcion = formulario.descripcion.value;
     let valor = Number(formulario.valor.value);
     let select = formulario.select.value;
-    let total = valor;
 
     if (select == 1) {
         valor = -valor;
-        total = valor + valor
+        egresos = egresos + valor;
+        document.querySelector("#Egresos").insertAdjacentHTML("beforeend", `
+        <p class="col-6 d-flex justify-content-center">${descripcion}</p><p class="col-6 d-flex justify-content-center"> -$${-valor}</p>
+        `)
     } else {
         valor = valor;
-        total = valor + valor
+        ingresos = ingresos + valor;
+        document.querySelector("#Ingresos").insertAdjacentHTML("beforeend", `
+        <div class="row container col-12 "> <p class="col-6 d-flex justify-content-center">${descripcion}</p><p class="col-6 d-flex justify-content-center"> $${valor}</p> </div>
+        `)
     };
+
+    let total = ingresos + egresos;
+
+    document.querySelector("#Ingre").innerHTML=`
+        <div class="row container col-12 "> <p class="col-6 d-flex justify-content-center"> INGRESOS </p><p class="col-6 d-flex justify-content-center"> $${ingresos}</p> </div>
+    `
+
+    document.querySelector("#Egre").innerHTML=`
+        <div class="row container col-12 "> <p class="col-6 d-flex justify-content-center"> EGRESOS </p><p class="col-6 d-flex justify-content-center"> $${egresos}</p> </div>
+    `
 
     montoTotal.innerHTML = `<h1 class="col-12 d-flex justify-content-center"> $ ${total}</h1>`;
 
@@ -33,6 +50,3 @@ formulario.addEventListener("submit", (e)=>{
 
     formulario.reset();
 });
-
-// <h1 class="col-12 d-flex justify-content-center">$ 10.000.000.000</h1>
-
