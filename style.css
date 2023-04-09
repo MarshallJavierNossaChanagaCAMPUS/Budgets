@@ -3,13 +3,18 @@
     padding: 0 !important;
 }
 
-#section1{
+#div1{
     height: 40vh;
     width: 100%;
 }
 
-#section2{
-    height: 60vh;
+#div2{
+    height: 10vh;
+    width: 100%;
+}
+
+#div3{
+    height: 50vh;
     width: 100%;
 }
 

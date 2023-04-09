@@ -28,26 +28,35 @@
   </head>
 
   <body>
-    <section>
 
-    </section>
+    <div class="row" id="div1">
+      <h3 class="col-12 d-flex justify-content-center">Presupuesto disponible</h3>
+      <div id="montoTotal"></div>
+      <div class="col-12 d-flex justify-content-center"> Ingresos </div>
+      <div class="col-12 d-flex justify-content-center"> Egresos </div>
+    </div>
 
-    <section>
+    <div class="d-flex justify-content-center align-items-center" id="div2">
       <form id="form">
-        <select name="dinero" id="select">
-          <option value="">+</option>
-          <option value="">-</option>
+        <select name="select">
+          <option value="0">+</option>
+          <option value="1">-</option>
         </select>
         <input type="text" name="descripcion" id="descripcion" placeholder="Añadir descripción" required>
         <input type="number" name="valor" placeholder="Valor" required>
         <input type="submit" value="Guardar">
       </form>
-    </section>
+    </div>
 
-    <section>
-
-    </section>
-
+    <div class="row" id="div3">
+      <div class="row col-6 d-flex justify-content-center">
+        <h2 class="col-12 d-flex justify-content-center"> Ingresos </h2>
+        <div class="col-12 d-flex justify-content-center" id="ingresos"></div>
+      </div>
+      <div class="col-6 d-flex justify-content-center">
+        <h2> Egresos </h2>
+      </div>
+    </div>
   </body>
 
 </html>
