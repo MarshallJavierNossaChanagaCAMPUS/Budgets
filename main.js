@@ -1,4 +1,13 @@
-let formulario = document.querySelector("#form");
+import myForm from "./components/myForm.js";
+
+myForm.dataForm();
+    
+
+
+
+
+
+/* let formulario = document.querySelector("#form");
 let montoTotal = document.querySelector("#montoTotal");
 let datos = [];
 let ingresos = 0;
@@ -18,24 +27,23 @@ formulario.addEventListener("submit", (e)=>{
         valor = -valor;
         egresos = egresos + valor;
         document.querySelector("#Egresos").insertAdjacentHTML("beforeend", `
-        <p class="col-6 d-flex justify-content-center">${descripcion}</p><p class="col-6 d-flex justify-content-center"> -$${-valor}</p>
+        <div class="row container col-12 parrafo"> <p class="col-6 d-flex justify-content-center">${descripcion}</p><p class="col-6 d-flex justify-content-center"> -$${-valor}</p> </div> <br> 
         `)
     } else {
-        valor = valor;
         ingresos = ingresos + valor;
         document.querySelector("#Ingresos").insertAdjacentHTML("beforeend", `
-        <div class="row container col-12 "> <p class="col-6 d-flex justify-content-center">${descripcion}</p><p class="col-6 d-flex justify-content-center"> $${valor}</p> </div>
+        <div class="row container col-12 parrafo"> <p class="col-6 d-flex justify-content-center">${descripcion}</p><p class="col-6 d-flex justify-content-center"> $${valor}</p> </div> <br> 
         `)
     };
 
     let total = ingresos + egresos;
 
     document.querySelector("#Ingre").innerHTML=`
-        <div class="row container col-12 "> <p class="col-6 d-flex justify-content-center"> INGRESOS </p><p class="col-6 d-flex justify-content-center"> $${ingresos}</p> </div>
+        <p class="col-6 d-flex justify-content-center"> INGRESOS </p><p class="col-6 d-flex justify-content-center"> $${ingresos}</p>
     `
 
     document.querySelector("#Egre").innerHTML=`
-        <div class="row container col-12 "> <p class="col-6 d-flex justify-content-center"> EGRESOS </p><p class="col-6 d-flex justify-content-center"> $${egresos}</p> </div>
+        <p class="col-6 d-flex justify-content-center"> EGRESOS </p><p class="col-6 d-flex justify-content-center"> $${egresos}</p>
     `
 
     montoTotal.innerHTML = `<h1 class="col-12 d-flex justify-content-center"> $ ${total}</h1>`;
@@ -49,4 +57,4 @@ formulario.addEventListener("submit", (e)=>{
     console.log(datos);
 
     formulario.reset();
-});
+}); */
