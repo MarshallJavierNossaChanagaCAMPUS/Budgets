@@ -1,17 +1,19 @@
-let datos = [];
-let ingresos = 0;
-let egresos = 0;
-
-
 export default {
-    data() {
-        let formulario = document.querySelector("#form");
-        let montoTotal = document.querySelector("#montoTotal");
+  data() {
+    let datos = [];
 
-        let descripcion = formulario.descripcion.value;
-        let valor = Number(formulario.valor.value);
-        let select = formulario.select.value;
+    let formulario = document.querySelector("#form");
 
-        localStorage.setItem("myForm", JSON.stringify(datos))
-    }
-}
+    let descripcion = formulario.descripcion.value;
+    let valor = Number(formulario.valor.value);
+    let select = formulario.select.value;
+
+    datos.unshift({
+        descripcion: descripcion,
+        valor: valor,
+        select: select
+    });
+
+    localStorage.setItem("myForm", JSON.stringify(datos));
+  },
+};

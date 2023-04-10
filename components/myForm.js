@@ -1,58 +1,49 @@
-//import config from "../storage/config.js";
+import config from "../storage/config.js";
 
+let formulario = document.querySelector("#form");
+let montoTotal = document.querySelector("#montoTotal");
+let ingresos = 0;
+let egresos = 0;
 
 export default {
-    dataForm() {
-        let formulario = document.querySelector("#form");
-        let montoTotal = document.querySelector("#montoTotal");
-        let datos = [];
-        let ingresos = 0;
-        let egresos = 0;
+  dataForm() {
+    formulario.addEventListener("submit", (e) => {
+      e.preventDefault();
+      config.data();
+      const datos = (this, JSON.parse(localStorage.getItem("myForm")));
 
-        //Con este fragmento de codigo pbtengo los datos de "valor", "select" y "descripcion" y los imprimo.
+      if (datos[0].select == 1) {
+        datos[0].valor = -datos[0].valor;
+        egresos = egresos + datos[0].valor;
+        document.querySelector("#Egresos").insertAdjacentHTML(
+          "beforeend",
+          `
+          <p class="col-12 d-flex justify-content-center">${datos[0].descripcion} $${datos[0].valor}</p><br><br> 
+                `
+        );
+      } else {
+        ingresos = ingresos + datos[0].valor;
+        document.querySelector("#Ingresos").insertAdjacentHTML(
+          "beforeend",
+          `
+                <p class="col-12 d-flex justify-content-center">${datos[0].descripcion} $${datos[0].valor}</p><br> 
+                `
+        );
+      }
 
-        formulario.addEventListener("submit", (e) => {
-            e.preventDefault();
-            // let data = new FormData(formulario);
+      let total = egresos + ingresos;
 
-            let descripcion = formulario.descripcion.value;
-            let valor = Number(formulario.valor.value);
-            let select = formulario.select.value;
+      document.querySelector("#Ingre").innerHTML = `
+        <p class="col-6 d-flex justify-content-center"> INGRESOS </p><p class="col-6 d-flex justify-content-center"> $${ingresos}</p>
+    `;
 
-            if (select == 1) {
-                valor = -valor;
-                egresos = egresos + valor;
-                document.querySelector("#Egresos").insertAdjacentHTML("beforeend", `
-                <div class="row container col-12 parrafo"> <p class="col-6 d-flex justify-content-center">${descripcion}</p><p class="col-6 d-flex justify-content-center"> -$${-valor}</p> </div> <br> 
-                `)
-            } else {
-                ingresos = ingresos + valor;
-                document.querySelector("#Ingresos").insertAdjacentHTML("beforeend", `
-                <div class="row container col-12 parrafo"> <p class="col-6 d-flex justify-content-center">${descripcion}</p><p class="col-6 d-flex justify-content-center"> $${valor}</p> </div> <br> 
-                `)
-            };
+      document.querySelector("#Egre").innerHTML = `
+        <p class="col-6 d-flex justify-content-center"> EGRESOS </p><p class="col-6 d-flex justify-content-center"> $${egresos}</p>
+    `;
 
-            let total = ingresos + egresos;
+      montoTotal.innerHTML = `<h1 class="col-12 d-flex justify-content-center"> $ ${total}</h1>`;
 
-            document.querySelector("#Ingre").innerHTML = `
-            <p class="col-6 d-flex justify-content-center"> INGRESOS </p><p class="col-6 d-flex justify-content-center"> $${ingresos}</p>
-            `
-
-            document.querySelector("#Egre").innerHTML = `
-            <p class="col-6 d-flex justify-content-center"> EGRESOS </p><p class="col-6 d-flex justify-content-center"> $${egresos}</p>
-            `
-
-            montoTotal.innerHTML = `<h1 class="col-12 d-flex justify-content-center"> $ ${total}</h1>`;
-
-            datos.push({
-                descripcion: descripcion,
-                valor: valor,
-                select: select
-            });
-
-            console.log(datos);
-
-            formulario.reset();
-        });
-    }
-}
+      formulario.reset();
+    });
+  },
+};

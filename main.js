@@ -1,11 +1,7 @@
 import myForm from "./components/myForm.js";
+import config from "./components/myForm.js";
 
 myForm.dataForm();
-    
-
-
-
-
 
 /* let formulario = document.querySelector("#form");
 let montoTotal = document.querySelector("#montoTotal");
