@@ -4,16 +4,21 @@
 }
 
 #div1{
+    background-image: url(img/wallpaper.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
     height: 40vh;
     width: 100%;
 }
 
 #div2{
+    border: solid black 5px;
     height: 10vh;
     width: 100%;
 }
 
 #div3{
+    background-color: aquamarine;
     height: 50vh;
     width: 100%;
 }
@@ -29,4 +34,10 @@
 
 .parrafo{
     height: 30px !important;
+}
+
+#grafica {
+    background: aquamarine;
+    width: 500px;
+    min-height: 500px;
 }
