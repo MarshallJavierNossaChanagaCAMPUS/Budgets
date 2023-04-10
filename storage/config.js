@@ -4,7 +4,7 @@ let egresos = 0;
 
 
 export default {
-    data(){
+    data() {
         let formulario = document.querySelector("#form");
         let montoTotal = document.querySelector("#montoTotal");
 
