@@ -38,8 +38,8 @@ const getOptionChart = () => {
           show: false,
         },
         data: [
-          { value: datos.ingresos , name: "Ingresos" },
-          { value: datos.egresos , name: "Egresos" },
+          { value: datos[0].ingresos , name: "Ingresos" },
+          { value: datos[0].egresos , name: "Egresos" },
         ],
       },
     ],
