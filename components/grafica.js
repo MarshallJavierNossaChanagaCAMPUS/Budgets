@@ -45,7 +45,7 @@ const getOptionChart = () => {
     ],
   };
 };
-
+console.log(datos);
 const initCharts = () => {
     const chart = echarts.init(document.querySelector("#grafica"));
 

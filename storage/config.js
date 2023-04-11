@@ -13,8 +13,8 @@ export default {
     let valor = Number(formulario.valor.value);
     let select = formulario.select.value;
 
-    (select = "0") ? ingresos = ingresos + valor 
-    : egresos = egresos - valor;
+    (select == "0") ? ingresos = ingresos + valor 
+    : egresos = egresos + valor;
 
     let array = {
       descripcion: descripcion,
