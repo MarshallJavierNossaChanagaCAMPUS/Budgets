@@ -1,6 +1,7 @@
 import config from "../storage/config.js";
 config.data();
 const datos = (this, JSON.parse(localStorage.getItem("myForm")));
+
 const getOptionChart = () => {
   return {
     
@@ -37,8 +38,8 @@ const getOptionChart = () => {
           show: false,
         },
         data: [
-          { value: 2 , name: "Ingresos" },
-          { value: 1 , name: "Egresos" },
+          { value: datos.ingresos , name: "Ingresos" },
+          { value: datos.egresos , name: "Egresos" },
         ],
       },
     ],

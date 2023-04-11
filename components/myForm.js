@@ -2,8 +2,7 @@ import config from "../storage/config.js";
 
 let formulario = document.querySelector("#form");
 let montoTotal = document.querySelector("#montoTotal");
-let ingresos = 0;
-let egresos = 0;
+
 
 export default {
   dataForm() {
@@ -14,7 +13,7 @@ export default {
 
       if (datos[0].select == 1) {
         datos[0].valor = -datos[0].valor;
-        egresos = egresos + datos[0].valor;
+        datos[0].egresos = datos[0].egresos + datos[0].valor;
         document.querySelector("#Egresos").insertAdjacentHTML(
           "beforeend",
           `
@@ -22,26 +21,28 @@ export default {
                 `
         );
       } else {
-        ingresos = ingresos + datos[0].valor;
+        datos[0].ingresos = datos[0].ingresos + datos[0].valor;
         document.querySelector("#Ingresos").insertAdjacentHTML(
           "beforeend",
           `
-                <p class="col-12 d-flex justify-content-center">${datos[0].descripcion} $${datos[0].valor}</p><br> 
-                `
+          <p class="col-12 d-flex justify-content-center">${datos[0].descripcion} $${datos[0].valor}</p><br> 
+          `
         );
       }
 
-      let total = egresos + ingresos;
+      let total = datos[0].egresos + datos[0].ingresos;
 
       document.querySelector("#Ingre").innerHTML = `
-        <p class="col-6 d-flex justify-content-center"> INGRESOS </p><p class="col-6 d-flex justify-content-center"> $${ingresos}</p>
+        <p class="col-6 d-flex justify-content-center"> INGRESOS </p><p class="col-6 d-flex justify-content-center"> $${datos[0].ingresos}</p>
     `;
 
       document.querySelector("#Egre").innerHTML = `
-        <p class="col-6 d-flex justify-content-center"> EGRESOS </p><p class="col-6 d-flex justify-content-center"> $${egresos}</p>
+        <p class="col-6 d-flex justify-content-center"> EGRESOS </p><p class="col-6 d-flex justify-content-center"> $${datos[0].egresos}</p>
     `;
 
       montoTotal.innerHTML = `<h1 class="col-12 d-flex justify-content-center"> $ ${total}</h1>`;
+
+      console.log(datos);
 
       formulario.reset();
     });
